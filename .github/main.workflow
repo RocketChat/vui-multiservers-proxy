@@ -7,9 +7,9 @@ workflow "Lint, test, and deploy server" {
 }
  action "Test" {
   needs = "Lint"
-  uses = ".github/actions/test/"
+  uses = "./.github/actions/test/"
 }
  action "Deploy" {
   needs = ["Test", "Lint"]
-  uses = ".github/actions/deploy/"
+  uses = "./.github/actions/deploy/"
 }

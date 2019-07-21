@@ -1,3 +1,5 @@
 #!/bin/sh -l
 
-sh -c "echo $*"
+sh -c "mongod &"
+sh -c "npm i"
+sh -c "npm test"

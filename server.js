@@ -6,6 +6,7 @@ const routes = require("./routes");
 const server = restify.createServer();
 
 server.use(restify.plugins.bodyParser());
+server.use(restify.plugins.queryParser());
 
 server.listen(config.PORT, () => {
     mongoose.connect(config.MONGODB, {

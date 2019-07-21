@@ -1,6 +1,8 @@
 #!/bin/sh -l
 
-sh -c "mongod &"
-sh -c "npm i"
-sh -c "npm start &"
-sh -c "npm test"
+mongod &
+npm i
+export MONGODB_URI=mongodb://127.0.0.1:27017/test 
+node server.js &
+sleep 2
+npm test

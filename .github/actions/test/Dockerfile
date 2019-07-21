@@ -1,13 +1,13 @@
-FROM debian:9.5-slim
+FROM singli/mongonode:latest
 
-LABEL "com.github.actions.name"="Hello World"
-LABEL "com.github.actions.description"="Write arguments to the standard output"
+LABEL "com.github.actions.name"="Server test"
+LABEL "com.github.actions.description"="Test proxy server"
 LABEL "com.github.actions.icon"="mic"
 LABEL "com.github.actions.color"="purple"
 
-LABEL "repository"="http://github.com/octocat/hello-world"
+LABEL "repository"="http://github.com/sing-li/testaction"
 LABEL "homepage"="http://github.com/actions"
-LABEL "maintainer"="Octocat <octocat@github.com>"
+LABEL "maintainer"="Sing Li <sing.li@rocket.chat>"
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

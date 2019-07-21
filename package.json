@@ -1,7 +1,7 @@
 {
   "name": "multiserverproxyrestify",
   "version": "1.0.0",
-  "description": "proxy server adding multi servers access for Alexa and Google Action ",
+  "description": "proxy server adding multi servers access for Alexa and Google Action",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

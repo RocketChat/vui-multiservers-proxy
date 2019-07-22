@@ -3,13 +3,17 @@ workflow "Lint, test, and deploy server" {
   on = "push"
 }
  action "Lint" {
-  uses = "./.github/actions/lint/"
+  needs = ["Test","Filter Not Act"]
+  uses = "sing-li/eslint-action@master"
 }
  action "Test" {
-  needs = "Lint"
   uses = "./.github/actions/test/"
 }
  action "Deploy" {
   needs = ["Test", "Lint"]
   uses = "./.github/actions/deploy/"
+}
+action "Filter Not Act" {
+  uses = "actions/bin/filter@3c0b4f0e63ea54ea5df2914b4fabf383368cd0da"
+  args = "not actor nektos/act"
 }

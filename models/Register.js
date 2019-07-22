@@ -3,35 +3,35 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   _id: {
     type: String,
-    required: true
+    required: true,
   },
   serverinfo: {
     serverurl: {
       type: String,
-      required: true
+      required: true,
     },
     servername: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   headers: {
-    "X-Auth-Token": {
+    'X-Auth-Token': {
       type: String,
-      required: true
+      required: true,
     },
-    "X-User-Id": {
+    'X-User-Id': {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   expireAt: {
     type: Date,
     default: Date.now,
     index: {
-      expires: '5m'
-    }
-  }
+      expires: '5m',
+    },
+  },
 });
 
 const User = mongoose.model('User', UserSchema);

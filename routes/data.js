@@ -1,5 +1,4 @@
 const Register = require('../models/Register');
-const errors = require('restify-errors');
 
 module.exports = server => {
 
@@ -7,13 +6,7 @@ module.exports = server => {
 
         try {
 
-            //Check For JSON
-
-            if (!req.is('application/json')) {
-                return next(new errors.InvalidContentError("Expects 'application/json'"));
-            }
-
-            var qcode = JSON.parse(req.body).qcode;
+            var qcode = req.query.qcode;
 
             const data = await Register.findOne({_id: qcode});
 

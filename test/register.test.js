@@ -43,6 +43,22 @@ describe('POST /register', () => {
         });
     });
 
+    describe('should fail if missing param', () => {
+        
+        it('returns error', function (done) {   
+            chai.request("http://localhost:3000")
+                .post("/register")
+                .send({servername: "bots",  userid: "FpaaN9jwwJT9ts", token: "E6XKwshBE0NRHQzdlw6XDnUQdZumpTfP8R3cb3"})
+                .end(function (err, res) {
+                    expect(err).to.be.null;
+                    expect(res).to.have.status(400);
+                    expect(res.body.message).to.not.be.null;
+                    expect(res.body.status).to.be.false;
+                    done();
+                });
+        });
+    });
+
     // describe('should fail if code exists', () => {
         
     //     it('returns error', function (done) {   
@@ -61,14 +77,13 @@ describe('POST /register', () => {
 
 });
 
-describe('GET /user/data', () => {
+describe('GET /user/data?:qcode', () => {
     describe('should get correct data from code', () => {
         
         it('responds with user data', function (done) {
             
             chai.request("http://localhost:3000")
-                .get('/user/data')
-                .send({qcode: pcode})
+                .get(`/user/data?qcode=${pcode}`)
                 .end(function (err, res) {
                     expect(err).to.be.null;
                     expect(res).to.have.status(200);
@@ -88,8 +103,7 @@ describe('GET /user/data', () => {
         it('returns error', function (done) {
             
             chai.request("http://localhost:3000")
-                .get('/user/data')
-                .send({qcode: pcode-10})
+            .get(`/user/data?qcode=${pcode-10}`)
                 .end(function (err, res) {
                     expect(err).to.be.null;
                     expect(res).to.have.status(404);

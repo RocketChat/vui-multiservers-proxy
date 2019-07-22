@@ -33,8 +33,7 @@ curl --header "Content-Type: application/json" \
 
 curl --header "Content-Type: application/json" \
   --request GET \
-  --data '{"qcode":"778964"}' \
-  http://localhost:3000/user/data
+  http://localhost:3000/user/data?qcode=348032
 
 ```
 **Expected Response** 

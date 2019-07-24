@@ -33,8 +33,8 @@ module.exports = (server) => {
     };
 
     const headers = {
-      'X-Auth-Token': userid,
-      'X-User-Id': token,
+      'X-Auth-Token': token,
+      'X-User-Id': userid,
     };
 
     const register = new Register({

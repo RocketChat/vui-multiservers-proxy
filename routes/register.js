@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 const Register = require('../models/Register');
 const errors = require('restify-errors');
+const uniqueRandom = require('unique-random');
 
 module.exports = (server) => {
   server.get('/ping', (req, res, next) => {
@@ -14,7 +16,6 @@ module.exports = (server) => {
     // Check For JSON
 
     if (!req.is('application/json')) {
-      // eslint-disable-next-line max-len
       return next(new errors.InvalidContentError('Expects \'application/json\''));
     }
 
@@ -25,7 +26,8 @@ module.exports = (server) => {
       token,
     } = req.body;
 
-    const _id = Math.floor(100000 + Math.random() * 900000);
+    const randomID = uniqueRandom(99999, 1000000);
+    const _id = randomID();
 
     const serverinfo = {
       'serverurl': serverurl,
@@ -61,20 +63,27 @@ module.exports = (server) => {
           });
 
           next();
+        } else {
+          register.save()
+              .then()
+              .catch();
+
+          res.send({
+            code: _id,
+            expiry: 5,
+            status: true,
+          });
+
+          next();
         }
-
-        register.save()
-            .then()
-            .catch();
-
-        res.send({
-          code: _id,
-          expiry: 5,
-          status: true,
-        });
-
-        next();
       }
+    }).catch(() => {
+      res.send(500, {
+        message: 'Internal Server Error',
+        status: false,
+      });
+
+      next();
     });
   });
 };

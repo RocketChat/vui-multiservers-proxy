@@ -12,7 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ask-cli": "^1.7.22",
+    "circular-json": "^0.5.9",
     "dotenv": "^8.2.0",
+    "heroku": "^7.36.3",
+    "heroku-cli": "^7.0.9",
+    "install": "^0.13.0",
     "mongoose": "^5.6.5",
     "restify": "^8.3.3",
     "restify-errors": "^8.0.0",

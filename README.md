@@ -1,11 +1,13 @@
 # vui-multiservers-proxy
-Proxy server adding multi servers access for Alexa and Google Action
+Proxy server adding multi servers access for Alexa and Google Action.
+
 
 ## Deployment
 
 ### Prerequisites
 
 1. MongoDB (> v4.0)
+2. Atlas [user account](https://docs.atlas.mongodb.com/tutorial/create-atlas-account/) (Please refer to the official documentation of [MongoDB](https://docs.atlas.mongodb.com/tutorial/create-new-cluster/) to learn how to create clusters)
 
 ### Instructions
 
@@ -32,6 +34,8 @@ Proxy server adding multi servers access for Alexa and Google Action
 
 **CURL Command:**
 
+Import the below curl command in the postman.
+
 ```
 
 curl --header "Content-Type: application/json" \
@@ -55,6 +59,8 @@ curl --header "Content-Type: application/json" \
 ## Get User Data:
 
 **CURL Command:**
+
+Import the below curl command in the postman.
 
 ```
 
@@ -85,3 +91,4 @@ curl --header "Content-Type: application/json" \
 }
 
 ```
+Now [deploy](https://devcenter.heroku.com/articles/git) the proxy server on heroku (Please refer to the official documentation of heroku) or any hosting service provider of your choice.
